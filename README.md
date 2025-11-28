@@ -2,8 +2,8 @@
 
 > Professional Business Solutions Developer specializing in POS Systems, Inventory Management, and Business Websites for SMEs.
 
-[![Live Demo](https://img.shields.io/badge/Live-Demo-brightgreen)](https://agamlatiff.com)
-[![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![Live Demo](https://img.shields.io/badge/Live-Demo-brightgreen)]([https://agamlatiff.com](https://agamlatiff-website.netlify.app/))
+[![License](https://img.shields.io/badge/License-MIT-blue.svg)]
 [![React](https://img.shields.io/badge/React-18.3-61DAFB?logo=react)](https://reactjs.org/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.6-3178C6?logo=typescript)](https://www.typescriptlang.org/)
 [![Vite](https://img.shields.io/badge/Vite-6.4-646CFF?logo=vite)](https://vitejs.dev/)
