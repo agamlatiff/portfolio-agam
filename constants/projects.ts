@@ -4,12 +4,12 @@ import { Project } from '../types';
 export const PROJECTS: Project[] = [
   {
     id: '1',
-    title: 'Enterprise Learning Management System (LMS) & CBT Platform',
+    title: 'Upskills - Learning Management System (LMS)',
     slug: 'lms-platform',
-    shortDescription: 'Solusi E-Learning terpadu untuk institusi pendidikan. Mengelola ribuan siswa, materi pembelajaran, dan ujian online (CBT) dengan keamanan tinggi dalam satu dashboard.',
+    shortDescription: 'Solusi E-Learning terpadu untuk orang yang ingin belajar skill baru. Mengelola materi pembelajaran dan multi role admin, mentor dan student.',
     fullDescription: `
       <p class="mb-6 text-lg leading-relaxed">
-        Project ini dikembangkan untuk sebuah lembaga pendidikan besar yang membutuhkan transisi dari sistem konvensional ke digital. Tantangan utamanya adalah menangani <strong>ujian serentak (Computer Based Test)</strong> untuk ribuan siswa tanpa down-time.
+        Project ini dikembangkan untuk siapapun yang ingin mengembangkan skill diluar pendidikan. Tantangan utamanya adalah menangani <strong>user yang ingin belajar skill baru</strong> untuk masa depan yang dia inginkan.
       </p>
       
       <div class="mb-6">
@@ -17,11 +17,11 @@ export const PROJECTS: Project[] = [
         <ul class="space-y-3">
             <li class="flex gap-3">
                 <span class="flex-shrink-0 w-1.5 h-1.5 mt-2 rounded-full bg-primary"></span>
-                <span><strong>Bank Soal & Pengacak Otomatis:</strong> Soal diinput sekali, sistem mengacak urutan nomor dan jawaban untuk setiap siswa guna meminimalisir kecurangan.</span>
+                <span><strong>User bisa baca materi pembelajaran:</strong> materi pembelajaran harus mudah dipahami agar user bisa belajar sendiri.</span>
             </li>
             <li class="flex gap-3">
                 <span class="flex-shrink-0 w-1.5 h-1.5 mt-2 rounded-full bg-primary"></span>
-                <span><strong>Sistem Ujian Anti-Cheat:</strong> Timer otomatis, blokir tab baru (browser lock), dan auto-submit jika waktu habis.</span>
+                <span><strong>User bisa berlangganan: </strong> untuk belajar skill baru dengan harga yang terjangkau.</span>
             </li>
             <li class="flex gap-3">
                 <span class="flex-shrink-0 w-1.5 h-1.5 mt-2 rounded-full bg-primary"></span>
@@ -38,7 +38,7 @@ export const PROJECTS: Project[] = [
         "Sistem ini berhasil memangkas waktu koreksi ujian guru hingga 90% dan menghemat biaya cetak kertas ujian sepenuhnya."
       </p>
     `,
-    heroImage: 'https://picsum.photos/800/450?random=101',
+    heroImage: 'https://picsum.photos/1200/600/?random=101',
     gallery: [
         'https://picsum.photos/800/600?random=101',
         'https://picsum.photos/800/600?random=102',
@@ -50,11 +50,12 @@ export const PROJECTS: Project[] = [
     industry: 'Education & EdTech',
     date: 'Januari 2024',
     isFeatured: true,
-    youtubeId: 'dQw4w9WgXcQ' // Video Demo tersedia
+    youtubeId: '-qq7Lu6KJ0o', // Video Demo tersedia
+    repoUrl: 'https://github.com/agamlatiff/upskills'
   },
   {
     id: '2',
-    title: 'Warehouse Management System (WMS) & Multi-Branch Inventory',
+    title: 'Saturday - Warehouse Management System (WMS)',
     slug: 'warehouse-management',
     shortDescription: 'Sistem manajemen gudang terpusat untuk distributor. Kontrol stok masuk/keluar, transfer antar cabang, dan stock opname digital real-time.',
     fullDescription: `
@@ -96,10 +97,11 @@ export const PROJECTS: Project[] = [
     industry: 'Logistik & Supply Chain',
     date: 'Desember 2023',
     isFeatured: true,
-    youtubeId: 'dQw4w9WgXcQ' // Video Demo tersedia (Ganti ID jika ada yang baru)
+    youtubeId: 'Sba29tQRzyE', // Video Demo tersedia (Ganti ID jika ada yang baru)
+    repoUrl: 'https://github.com/agamlatiff/saturday'
   },
   {
-    id: '3', // Changed ID to unique
+    id: '3',
     title: 'Custom Brand E-Commerce & Membership Platform',
     slug: 'ecommerce-fashion',
     shortDescription: 'Platform toko online eksklusif dengan identitas brand kuat. Fitur membership berjenjang, manajemen varian produk kompleks, dan integrasi logistik otomatis.',
@@ -145,8 +147,9 @@ export const PROJECTS: Project[] = [
     techStack: ['Next.js', 'Node.js', 'MySQL', 'Midtrans Gateway'],
     industry: 'Retail & Fashion',
     date: 'Oktober 2023',
-    // Tidak ada youtubeId sesuai request
-    liveLink: 'https://store-demo.agamlatiff.com', // Demo Link Access
     isFeatured: false,
+    liveLink: 'https://store-demo.agamlatiff.com',
+    repoUrl: 'https://github.com/agamlatiff/alizon-store'
   }
 ];
+

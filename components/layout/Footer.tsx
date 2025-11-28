@@ -3,44 +3,47 @@ import React from 'react';
 import { Hexagon, Linkedin, Github, Instagram, ArrowRight, Mail, MapPin, Youtube, Video } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { NAV_LINKS, SERVICES, WA_LINKS } from '../../constants';
+import { useLanguage } from '../../context/LanguageContext';
 
 // Manual definition for icons to allow Lucide replacements easily
 const SOCIALS = [
   { icon: Instagram, href: "https://instagram.com/agamlatiff" },
-  { icon: Video, href: "https://tiktok.com/@agamlatiff" }, 
+  { icon: Video, href: "https://tiktok.com/@agamlatiff" },
   { icon: Linkedin, href: "https://linkedin.com/in/agamlatiff" },
   { icon: Github, href: "https://github.com/agamlatiff" },
   { icon: Youtube, href: "https://youtube.com/@agamlatiff" }
 ];
 
 const Footer: React.FC = () => {
+  const { t, translations } = useLanguage();
+
   return (
     <footer className="bg-white dark:bg-slate-950 text-slate-600 dark:text-slate-400 pt-20 pb-10 border-t border-slate-200 dark:border-slate-900 transition-colors duration-300">
-      
+
       {/* Top Banner CTA */}
       <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 mb-16">
         <div className="bg-gradient-to-r from-primary to-indigo-600 rounded-3xl p-8 md:p-12 relative overflow-hidden shadow-2xl shadow-primary/20">
-            <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
-            <div className="flex flex-col md:flex-row items-center justify-between gap-8 relative z-10">
-                <div className="text-center md:text-left">
-                    <h3 className="text-2xl md:text-3xl font-bold text-white mb-2">Punya Ide Project?</h3>
-                    <p className="text-indigo-100 max-w-lg">Konsultasikan kebutuhan sistem bisnis Anda hari ini. Gratis diskusi awal untuk menemukan solusi terbaik.</p>
-                </div>
-                <a 
-                    href={WA_LINKS.general}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="bg-white text-primary px-8 py-3.5 rounded-xl font-bold text-base hover:bg-indigo-50 transition-all shadow-lg transform hover:-translate-y-1 flex items-center gap-2 whitespace-nowrap"
-                >
-                    Hubungi Saya <ArrowRight size={18} />
-                </a>
+          <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
+          <div className="flex flex-col md:flex-row items-center justify-between gap-8 relative z-10">
+            <div className="text-center md:text-left">
+              <h3 className="text-2xl md:text-3xl font-bold text-white mb-2">{t('footer.cta.title')}</h3>
+              <p className="text-indigo-100 max-w-lg">{t('footer.cta.description')}</p>
             </div>
+            <a
+              href={WA_LINKS.general}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-white text-primary px-8 py-3.5 rounded-xl font-bold text-base hover:bg-indigo-50 transition-all shadow-lg transform hover:-translate-y-1 flex items-center gap-2 whitespace-nowrap"
+            >
+              {t('footer.cta.button')} <ArrowRight size={18} />
+            </a>
+          </div>
         </div>
       </div>
 
       <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
-          
+
           {/* Brand Column */}
           <div className="space-y-6">
             <Link to="/" className="flex items-center gap-2 group w-fit">
@@ -50,70 +53,107 @@ const Footer: React.FC = () => {
               <span className="font-bold text-2xl text-slate-900 dark:text-white tracking-tight">agamlatiff</span>
             </Link>
             <p className="text-slate-500 dark:text-slate-400 leading-relaxed text-sm">
-              Fullstack Developer spesialis solusi bisnis UMKM. Membangun sistem yang rapi, cepat, dan 100% hak milik Anda.
+              {t('footer.brandDescription')}
             </p>
             <div className="flex gap-3">
               {SOCIALS.map((social, idx) => (
-                  <a 
-                    key={idx}
-                    href={social.href} 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="w-10 h-10 rounded-lg bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-500 dark:text-slate-400 hover:bg-primary hover:text-white dark:hover:bg-primary dark:hover:text-white transition-all duration-300"
-                  >
-                    <social.icon size={18} />
-                  </a>
+                <a
+                  key={idx}
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-10 h-10 rounded-lg bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-500 dark:text-slate-400 hover:bg-primary hover:text-white dark:hover:bg-primary dark:hover:text-white transition-all duration-300"
+                >
+                  <social.icon size={18} />
+                </a>
               ))}
             </div>
           </div>
 
           {/* Quick Links */}
           <div>
-            <h4 className="font-bold text-slate-900 dark:text-white mb-6">Menu Utama</h4>
+            <h4 className="font-bold text-slate-900 dark:text-white mb-6">{t('footer.menus.main')}</h4>
             <ul className="space-y-3">
-                {NAV_LINKS.map((link) => (
-                <li key={link.name}>
-                    <Link 
-                        to={link.href} 
-                        className="text-slate-500 dark:text-slate-400 hover:text-primary dark:hover:text-primary transition-colors flex items-center gap-2 text-sm group"
-                    >
-                        <span className="w-1.5 h-1.5 rounded-full bg-slate-300 dark:bg-slate-700 group-hover:bg-primary transition-colors"></span>
-                        {link.name}
-                    </Link>
-                </li>
-                ))}
+              <li>
+                <Link
+                  to="/"
+                  className="text-slate-500 dark:text-slate-400 hover:text-primary dark:hover:text-primary transition-colors flex items-center gap-2 text-sm group"
+                >
+                  <span className="w-1.5 h-1.5 rounded-full bg-slate-300 dark:bg-slate-700 group-hover:bg-primary transition-colors"></span>
+                  {t('nav.home')}
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/services"
+                  className="text-slate-500 dark:text-slate-400 hover:text-primary dark:hover:text-primary transition-colors flex items-center gap-2 text-sm group"
+                >
+                  <span className="w-1.5 h-1.5 rounded-full bg-slate-300 dark:bg-slate-700 group-hover:bg-primary transition-colors"></span>
+                  {t('nav.services')}
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/projects"
+                  className="text-slate-500 dark:text-slate-400 hover:text-primary dark:hover:text-primary transition-colors flex items-center gap-2 text-sm group"
+                >
+                  <span className="w-1.5 h-1.5 rounded-full bg-slate-300 dark:bg-slate-700 group-hover:bg-primary transition-colors"></span>
+                  {t('nav.projects')}
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/about"
+                  className="text-slate-500 dark:text-slate-400 hover:text-primary dark:hover:text-primary transition-colors flex items-center gap-2 text-sm group"
+                >
+                  <span className="w-1.5 h-1.5 rounded-full bg-slate-300 dark:bg-slate-700 group-hover:bg-primary transition-colors"></span>
+                  {t('nav.about')}
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/contact"
+                  className="text-slate-500 dark:text-slate-400 hover:text-primary dark:hover:text-primary transition-colors flex items-center gap-2 text-sm group"
+                >
+                  <span className="w-1.5 h-1.5 rounded-full bg-slate-300 dark:bg-slate-700 group-hover:bg-primary transition-colors"></span>
+                  {t('nav.contact')}
+                </Link>
+              </li>
             </ul>
           </div>
 
           {/* Services - Updated with Query Params */}
           <div>
-            <h4 className="font-bold text-slate-900 dark:text-white mb-6">Layanan</h4>
+            <h4 className="font-bold text-slate-900 dark:text-white mb-6">{t('footer.menus.services')}</h4>
             <ul className="space-y-3">
-                {SERVICES.slice(0, 5).map((service) => (
-                <li key={service.id}>
-                    <Link 
-                        to={`/services?tab=${service.id}`} 
-                        className="text-slate-500 dark:text-slate-400 hover:text-primary dark:hover:text-primary transition-colors text-sm hover:underline decoration-primary/30 underline-offset-4"
+              {SERVICES.slice(0, 5).map((service) => {
+                const tService = translations.services[service.id as keyof typeof translations.services];
+                return (
+                  <li key={service.id}>
+                    <Link
+                      to={`/services?tab=${service.id}`}
+                      className="text-slate-500 dark:text-slate-400 hover:text-primary dark:hover:text-primary transition-colors text-sm hover:underline decoration-primary/30 underline-offset-4"
                     >
-                        {service.shortTitle || service.title}
+                      {tService?.shortTitle || tService?.title || service.shortTitle || service.title}
                     </Link>
-                </li>
-                ))}
+                  </li>
+                );
+              })}
             </ul>
           </div>
 
           {/* Contact Info - Updated */}
           <div>
-            <h4 className="font-bold text-slate-900 dark:text-white mb-6">Hubungi Kami</h4>
+            <h4 className="font-bold text-slate-900 dark:text-white mb-6">{t('footer.menus.contact')}</h4>
             <ul className="space-y-4 text-sm">
-                <li className="flex items-start gap-3">
-                    <MapPin size={20} className="text-primary mt-0.5" />
-                    <span className="text-slate-500 dark:text-slate-400">Bogor, Indonesia.<br/>(Remote Available Worldwide)</span>
-                </li>
-                <li className="flex items-center gap-3">
-                    <Mail size={20} className="text-primary" />
-                    <a href="mailto:agam.latiff@gmail.com" className="text-slate-500 dark:text-slate-400 hover:text-primary dark:hover:text-white transition-colors">agam.latiff@gmail.com</a>
-                </li>
+              <li className="flex items-start gap-3">
+                <MapPin size={20} className="text-primary mt-0.5" />
+                <span className="text-slate-500 dark:text-slate-400" dangerouslySetInnerHTML={{ __html: t('footer.location') }} />
+              </li>
+              <li className="flex items-center gap-3">
+                <Mail size={20} className="text-primary" />
+                <a href="mailto:agam.latiff@gmail.com" className="text-slate-500 dark:text-slate-400 hover:text-primary dark:hover:text-white transition-colors">agam.latiff@gmail.com</a>
+              </li>
             </ul>
           </div>
 
@@ -121,11 +161,11 @@ const Footer: React.FC = () => {
 
         {/* Footer Bottom */}
         <div className="border-t border-slate-200 dark:border-slate-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-slate-500 dark:text-slate-500">
-            <p>&copy; {new Date().getFullYear()} Agam Latifullah. All Rights Reserved.</p>
-            <div className="flex gap-6">
-                <a href="#" className="hover:text-primary dark:hover:text-white transition-colors">Privacy Policy</a>
-                <a href="#" className="hover:text-primary dark:hover:text-white transition-colors">Terms of Service</a>
-            </div>
+          <p>&copy; {new Date().getFullYear()} Agam Latifullah. {t('footer.rights')}</p>
+          <div className="flex gap-6">
+            <a href="#" className="hover:text-primary dark:hover:text-white transition-colors">{t('footer.privacy')}</a>
+            <a href="#" className="hover:text-primary dark:hover:text-white transition-colors">{t('footer.terms')}</a>
+          </div>
         </div>
       </div>
     </footer>

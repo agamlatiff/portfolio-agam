@@ -1,9 +1,9 @@
-
 import React, { useEffect } from 'react';
-import { X, CheckCircle2, Star, Zap, AlertTriangle, TrendingUp, Lightbulb } from 'lucide-react';
 import { PricingPlan } from '../../constants/pricing';
+import { X, Check, Zap, HelpCircle, Lightbulb, TrendingUp, ShieldCheck, Code2 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { WA_LINKS } from '../../constants';
+import { useLanguage } from '../../context/LanguageContext';
 
 interface PlanDetailModalProps {
   plan: PricingPlan | null;
@@ -12,176 +12,198 @@ interface PlanDetailModalProps {
 }
 
 const PlanDetailModal: React.FC<PlanDetailModalProps> = ({ plan, isOpen, onClose }) => {
+  const { t, translations } = useLanguage();
+
+  // Close on escape key
   useEffect(() => {
-    const handleEsc = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') {
-        onClose();
-      }
+    const handleEsc = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') onClose();
     };
     window.addEventListener('keydown', handleEsc);
-    
+    return () => window.removeEventListener('keydown', handleEsc);
+  }, [onClose]);
+
+  // Lock body scroll when modal is open
+  useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = 'hidden';
     } else {
-      document.body.style.overflow = 'auto';
+      document.body.style.overflow = 'unset';
     }
-
     return () => {
-      window.removeEventListener('keydown', handleEsc);
-      document.body.style.overflow = 'auto';
+      document.body.style.overflow = 'unset';
     };
-  }, [isOpen, onClose]);
+  }, [isOpen]);
 
-  if (!plan) return null;
+  if (!isOpen || !plan) return null;
 
-  const Icon = plan.icon;
+  const PlanIcon = plan.icon;
+
+  // Get translated plan details
+  // @ts-ignore - ignoring type check for dynamic key access
+  const translatedPlan = translations.pricing[plan.id] || plan;
+
+  // Fallback if translation is missing (use original plan data)
+  const planName = translatedPlan.name || plan.name;
+  const planDesc = translatedPlan.description || plan.description;
+  const planFeatures = translatedPlan.features || plan.features;
+  const planDetails = translatedPlan.details || plan.details;
+  const planCta = translatedPlan.cta || plan.cta;
 
   return (
     <AnimatePresence>
       {isOpen && (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center px-4">
+        <>
+          {/* Backdrop */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="absolute inset-0 bg-slate-900/80 backdrop-blur-sm"
             onClick={onClose}
-          ></motion.div>
-          
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9, y: 20 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.9, y: 20 }}
-            transition={{ type: 'spring', damping: 25, stiffness: 300 }}
-            className="relative w-full max-w-2xl bg-white dark:bg-slate-900 rounded-3xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh] border border-slate-200 dark:border-slate-800"
+            className="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 overflow-y-auto"
           >
-            {/* Header */}
-            <div className={`p-6 md:p-8 border-b border-slate-100 dark:border-slate-800 relative overflow-hidden flex-shrink-0 ${plan.isPopular ? 'bg-indigo-50/50 dark:bg-indigo-900/10' : 'bg-white dark:bg-slate-900'}`}>
-               
-               {/* Background Decor for Header */}
-               {plan.isPopular && <div className="absolute top-0 right-0 w-40 h-40 bg-primary/10 rounded-full blur-3xl -mr-10 -mt-10 pointer-events-none"></div>}
-
-               {/* Close Button - Absolute Position */}
-               <button 
-                  onClick={onClose} 
-                  className="absolute top-4 right-4 p-2 bg-slate-100/80 dark:bg-slate-800/80 text-slate-500 hover:text-slate-700 dark:hover:text-slate-200 rounded-full transition-colors z-20 backdrop-blur-sm"
-               >
-                  <X size={20} />
-               </button>
-
-               <div className="flex flex-col md:flex-row gap-5 items-start relative z-10 pr-8">
-                  {/* Icon */}
-                  <div className={`p-4 rounded-2xl flex-shrink-0 ${plan.isPopular ? 'bg-primary text-white shadow-lg shadow-primary/30' : 'bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-300'}`}>
-                      <Icon size={32} />
+            {/* Modal Container */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: 20 }}
+              onClick={(e) => e.stopPropagation()}
+              className="bg-white dark:bg-slate-900 w-full max-w-4xl rounded-3xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh]"
+            >
+              {/* Header */}
+              <div className="relative p-6 sm:p-8 border-b border-slate-100 dark:border-slate-800 flex items-start justify-between bg-slate-50/50 dark:bg-slate-800/50">
+                <div className="flex items-center gap-4">
+                  <div className={`w-14 h-14 rounded-2xl flex items-center justify-center ${plan.isPopular ? 'bg-primary/10 text-primary' : 'bg-white dark:bg-slate-800 text-slate-500 dark:text-slate-400 shadow-sm'
+                    }`}>
+                    <PlanIcon size={28} />
                   </div>
-
-                  {/* Title & Price Info */}
-                  <div className="flex-1 space-y-2">
-                      <div className="flex flex-wrap items-center gap-3">
-                          <h2 className="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white">{plan.name}</h2>
-                          {plan.isPopular && (
-                              <div className="px-3 py-1 rounded-full bg-orange-100 dark:bg-orange-500/20 text-orange-600 dark:text-orange-400 text-[10px] font-bold uppercase tracking-wider flex items-center gap-1 border border-orange-200 dark:border-orange-500/30">
-                                  <Star size={12} fill="currentColor" /> Unggulan
-                              </div>
-                          )}
-                      </div>
-                      
-                      <div className="flex items-center gap-2">
-                         <span className="text-xl md:text-2xl font-bold text-primary">{plan.price}</span>
-                         {plan.originalPrice && (
-                            <span className="text-sm text-slate-400 line-through decoration-slate-400/50">{plan.originalPrice}</span>
-                         )}
-                      </div>
-
-                      {/* Description moved to header for better context */}
-                      <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed font-medium pt-1">
-                        {plan.description}
-                      </p>
-                  </div>
-               </div>
-            </div>
-            
-            {/* Scrollable Body */}
-            <div className="p-6 md:p-8 overflow-y-auto custom-scrollbar bg-slate-50/50 dark:bg-slate-950/50">
-              
-              <h3 className="text-xs font-bold text-slate-400 dark:text-slate-500 uppercase tracking-widest mb-4 flex items-center gap-2">
-                <Zap size={14} /> Bedah Fitur Lengkap:
-              </h3>
-              
-              <div className="space-y-6">
-                {plan.details && plan.details.length > 0 ? (
-                    plan.details.map((detail, idx) => (
-                    <div key={idx} className="bg-white dark:bg-slate-900 rounded-2xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-md transition-shadow">
-                        <div className="flex items-center gap-2 mb-3 border-b border-slate-100 dark:border-slate-800 pb-2">
-                            <CheckCircle2 size={18} className="text-primary" />
-                            <h4 className="font-bold text-slate-900 dark:text-white text-base">{detail.feature}</h4>
-                        </div>
-                        
-                        <div className="space-y-3">
-                            {/* Problem */}
-                            <div className="flex gap-3 items-start">
-                                <div className="mt-0.5 text-red-500 flex-shrink-0">
-                                    <AlertTriangle size={16} />
-                                </div>
-                                <div className="text-sm text-slate-600 dark:text-slate-400">
-                                    <span className="font-semibold text-red-600 dark:text-red-400 text-xs uppercase block mb-0.5">Masalah:</span>
-                                    {detail.problem}
-                                </div>
-                            </div>
-
-                            {/* Solution */}
-                            <div className="flex gap-3 items-start">
-                                <div className="mt-0.5 text-blue-500 flex-shrink-0">
-                                    <Lightbulb size={16} />
-                                </div>
-                                <div className="text-sm text-slate-600 dark:text-slate-400">
-                                    <span className="font-semibold text-blue-600 dark:text-blue-400 text-xs uppercase block mb-0.5">Solusi Sistem:</span>
-                                    {detail.solution}
-                                </div>
-                            </div>
-
-                            {/* Benefit */}
-                            <div className="flex gap-3 items-start bg-green-50 dark:bg-green-900/10 p-2.5 rounded-lg border border-green-100 dark:border-green-900/30">
-                                <div className="mt-0.5 text-green-600 dark:text-green-400 flex-shrink-0">
-                                    <TrendingUp size={16} />
-                                </div>
-                                <div className="text-sm text-slate-700 dark:text-slate-300">
-                                    <span className="font-bold text-green-700 dark:text-green-400 text-xs uppercase block mb-0.5">Benefit Bisnis:</span>
-                                    {detail.benefit}
-                                </div>
-                            </div>
-                        </div>
+                  <div>
+                    <div className="flex items-center gap-2 mb-1">
+                      <h3 className="text-2xl font-bold text-slate-900 dark:text-white">{planName}</h3>
+                      {plan.isPopular && (
+                        <span className="bg-primary text-white text-[10px] font-bold px-2 py-0.5 rounded-full flex items-center gap-1">
+                          <Zap size={10} fill="currentColor" /> {t('modal.popular')}
+                        </span>
+                      )}
                     </div>
-                    ))
-                ) : (
-                    <p className="text-sm text-slate-500 text-center py-4">Detail fitur lengkap sedang disiapkan.</p>
-                )}
-              </div>
-            </div>
+                    <p className="text-slate-500 dark:text-slate-400 text-sm max-w-lg">
+                      {planDesc}
+                    </p>
+                  </div>
+                </div>
 
-            {/* Footer CTA */}
-            <div className="p-5 border-t border-slate-100 dark:border-slate-800 bg-white dark:bg-slate-900 z-10 shadow-[0_-5px_20px_rgba(0,0,0,0.05)]">
-               <a 
-                href={WA_LINKS.pricing(plan.name)}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={`w-full flex items-center justify-center gap-2 py-4 rounded-xl font-bold text-base shadow-xl transition-all transform hover:-translate-y-1 ${
-                    plan.isPopular 
-                    ? 'bg-gradient-to-r from-primary to-indigo-600 text-white hover:shadow-primary/30' 
-                    : 'bg-slate-900 dark:bg-slate-800 text-white hover:bg-slate-800 dark:hover:bg-slate-700'
-                }`}
-              >
-                <Zap size={18} fill="currentColor" />
-                Ambil Promo {plan.name} Sekarang
-              </a>
-              <div className="text-center mt-3 flex items-center justify-center gap-4 text-[10px] text-slate-400 font-medium uppercase tracking-wider">
-                 <span className="flex items-center gap-1"><CheckCircle2 size={10} /> Garansi Bug & Support</span>
-                 <span className="w-1 h-1 bg-slate-300 rounded-full"></span>
-                 <span className="flex items-center gap-1"><CheckCircle2 size={10} /> Source Code Hak Milik</span>
+                <button
+                  onClick={onClose}
+                  className="p-2 rounded-full hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-400 transition-colors"
+                >
+                  <X size={24} />
+                </button>
               </div>
-            </div>
+
+              {/* Scrollable Content */}
+              <div className="flex-1 overflow-y-auto p-6 sm:p-8">
+                <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+
+                  {/* Left Column: Feature Breakdown */}
+                  <div className="lg:col-span-2 space-y-8">
+                    <div>
+                      <h4 className="text-lg font-bold text-slate-900 dark:text-white mb-4 flex items-center gap-2">
+                        <Lightbulb size={20} className="text-yellow-500" />
+                        {t('modal.featureBreakdown')}
+                      </h4>
+
+                      <div className="space-y-4">
+                        {planDetails && planDetails.length > 0 ? (
+                          planDetails.map((detail: any, idx: number) => (
+                            <div key={idx} className="bg-slate-50 dark:bg-slate-800/50 rounded-2xl p-5 border border-slate-100 dark:border-slate-800 hover:border-primary/20 transition-colors">
+                              <h5 className="font-bold text-slate-900 dark:text-white mb-3 text-lg">
+                                {detail.feature}
+                              </h5>
+                              <div className="space-y-3">
+                                <div className="flex items-start gap-3">
+                                  <HelpCircle size={18} className="text-red-400 mt-0.5 shrink-0" />
+                                  <div>
+                                    <span className="text-xs font-bold text-red-500 uppercase tracking-wider block mb-0.5">{t('modal.problem')}</span>
+                                    <p className="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">{detail.problem}</p>
+                                  </div>
+                                </div>
+                                <div className="flex items-start gap-3">
+                                  <Check size={18} className="text-green-500 mt-0.5 shrink-0" />
+                                  <div>
+                                    <span className="text-xs font-bold text-green-600 uppercase tracking-wider block mb-0.5">{t('modal.solution')}</span>
+                                    <p className="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">{detail.solution}</p>
+                                  </div>
+                                </div>
+                                <div className="flex items-start gap-3 bg-blue-50 dark:bg-blue-900/10 p-3 rounded-xl">
+                                  <TrendingUp size={18} className="text-blue-500 mt-0.5 shrink-0" />
+                                  <div>
+                                    <span className="text-xs font-bold text-blue-600 uppercase tracking-wider block mb-0.5">{t('modal.benefit')}</span>
+                                    <p className="text-sm text-slate-700 dark:text-slate-200 leading-relaxed font-medium">{detail.benefit}</p>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          ))
+                        ) : (
+                          <p className="text-slate-500 italic">{t('modal.detailsPreparing')}</p>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Right Column: Summary & CTA */}
+                  <div className="lg:col-span-1">
+                    <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 sticky top-0">
+                      <div className="mb-6">
+                        <span className="text-sm text-slate-500 dark:text-slate-400">Investasi Terbaik</span>
+                        <div className="flex items-baseline gap-1 mt-1">
+                          <span className="text-3xl font-extrabold text-slate-900 dark:text-white">{plan.price}</span>
+                        </div>
+                        {plan.originalPrice && (
+                          <span className="text-sm text-slate-400 line-through decoration-slate-400/80">{plan.originalPrice}</span>
+                        )}
+                      </div>
+
+                      <div className="space-y-3 mb-8">
+                        {planFeatures.slice(0, 8).map((feat: string, idx: number) => (
+                          <div key={idx} className="flex items-start gap-2">
+                            <Check size={16} className="text-primary mt-0.5 shrink-0" />
+                            <span className="text-sm text-slate-600 dark:text-slate-300">{feat}</span>
+                          </div>
+                        ))}
+                        {planFeatures.length > 8 && (
+                          <div className="text-xs text-slate-400 pl-6 italic">+ {planFeatures.length - 8} fitur lainnya...</div>
+                        )}
+                      </div>
+
+                      <a
+                        href={WA_LINKS.pricing(planName)}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="w-full block text-center py-4 rounded-xl font-bold bg-primary text-white shadow-lg shadow-primary/25 hover:bg-primary-hover hover:-translate-y-1 transition-all mb-4"
+                      >
+                        {t('modal.getPromo')}
+                      </a>
+
+                      <div className="space-y-3 pt-4 border-t border-slate-100 dark:border-slate-800">
+                        <div className="flex items-center gap-2 text-xs text-slate-500 dark:text-slate-400">
+                          <ShieldCheck size={14} className="text-green-500" />
+                          <span>{t('modal.bugWarranty')}</span>
+                        </div>
+                        <div className="flex items-center gap-2 text-xs text-slate-500 dark:text-slate-400">
+                          <Code2 size={14} className="text-blue-500" />
+                          <span>{t('modal.sourceCode')}</span>
+                        </div>
+                      </div>
+
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </motion.div>
           </motion.div>
-        </div>
+        </>
       )}
     </AnimatePresence>
   );

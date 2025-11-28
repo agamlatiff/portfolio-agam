@@ -17,6 +17,7 @@ export interface Project {
   date: string;
   // FIX: Added optional isFeatured property to align with its usage in constants and components.
   isFeatured?: boolean;
+  repoUrl?: string;
 }
 
 export interface Testimonial {

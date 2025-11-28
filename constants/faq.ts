@@ -6,7 +6,7 @@ export const FAQS = [
   },
   {
     question: "Berapa lama proses pengerjaannya?",
-    answer: "Rata-rata <strong>4–16 hari kerja</strong>, tergantung jenis sistem dan kelengkapan data dari klien. Semakin lengkap data dikirim, semakin cepat proses selesai."
+    answer: "Rata-rata <strong>1–2 minggu</strong>, tergantung jenis sistem dan kelengkapan data dari klien. Semakin lengkap data dikirim, semakin cepat proses selesai."
   },
   {
     question: "Apakah saya harus paham teknologi untuk memakai sistem ini?",
