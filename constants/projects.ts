@@ -38,13 +38,21 @@ export const PROJECTS: Project[] = [
         "Sistem ini berhasil memangkas waktu koreksi ujian guru hingga 90% dan menghemat biaya cetak kertas ujian sepenuhnya."
       </p>
     `,
-    heroImage: 'https://picsum.photos/1200/600/?random=101',
+    heroImage: 'public/upskills/thumbnail-1.png',
     gallery: [
-        'https://picsum.photos/800/600?random=101',
-        'https://picsum.photos/800/600?random=102',
-        'https://picsum.photos/800/600?random=103',
-        'https://picsum.photos/800/600?random=104',
-        'https://picsum.photos/800/600?random=105'
+      'public/upskills/1.png',
+      'public/upskills/2.png',
+      'public/upskills/3.png',
+      'public/upskills/4.png',
+      'public/upskills/5.png',
+      'public/upskills/6.png',
+      'public/upskills/7.png',
+      'public/upskills/8.png',
+      'public/upskills/9.png',
+      'public/upskills/10.png',
+      'public/upskills/11.png',
+      'public/upskills/12.png',
+
     ],
     techStack: ['Laravel', 'React.js', 'Redis', 'MySQL'],
     industry: 'Education & EdTech',
@@ -85,13 +93,16 @@ export const PROJECTS: Project[] = [
         </ul>
       </div>
     `,
-    heroImage: 'https://picsum.photos/800/450?random=201',
+    heroImage: 'public/saturday/thumbnail-2.png',
     gallery: [
-        'https://picsum.photos/800/600?random=201',
-        'https://picsum.photos/800/600?random=202',
-        'https://picsum.photos/800/600?random=203',
-        'https://picsum.photos/800/600?random=204',
-        'https://picsum.photos/800/600?random=205'
+      'public/saturday/1.png',
+      'public/saturday/2.png',
+      'public/saturday/3.png',
+      'public/saturday/4.png',
+      'public/saturday/5.png',
+      'public/saturday/6.png',
+      'public/saturday/7.png',
+      'public/saturday/8.png',
     ],
     techStack: ['Laravel', 'React', 'PostgreSQL', 'Barcode Scanner'],
     industry: 'Logistik & Supply Chain',
@@ -136,19 +147,29 @@ export const PROJECTS: Project[] = [
         "Website ini membantu brand membangun database pelanggan sendiri (First Party Data) yang sangat berharga untuk marketing jangka panjang."
       </p>
     `,
-    heroImage: 'https://picsum.photos/800/450?random=301',
+    heroImage: 'public/alizonstore/thumbnail-3.png',
     gallery: [
-        'https://picsum.photos/800/600?random=301',
-        'https://picsum.photos/800/600?random=302',
-        'https://picsum.photos/800/600?random=303',
-        'https://picsum.photos/800/600?random=304',
-        'https://picsum.photos/800/600?random=305'
+      'public/alizonstore/1.png',
+      'public/alizonstore/2.png',
+      'public/alizonstore/3.png',
+      'public/alizonstore/4.png',
+      'public/alizonstore/5.png',
+      'public/alizonstore/6.png',
+      'public/alizonstore/7.png',
+      'public/alizonstore/8.png',
+      'public/alizonstore/9.png',
+      'public/alizonstore/10.png',
+      'public/alizonstore/11.png',
+      'public/alizonstore/12.png',
+      'public/alizonstore/13.png',
+      'public/alizonstore/14.png',
+
     ],
     techStack: ['Next.js', 'Node.js', 'MySQL', 'Midtrans Gateway'],
     industry: 'Retail & Fashion',
     date: 'Oktober 2023',
     isFeatured: false,
-    liveLink: 'https://store-demo.agamlatiff.com',
+    liveLink: 'https://alizonstore.netlify.app',
     repoUrl: 'https://github.com/agamlatiff/alizon-store'
   }
 ];

@@ -1,6 +1,5 @@
 
 import React from 'react';
-import { SKILLS } from '../../constants';
 import { motion, useReducedMotion, Variants } from 'framer-motion';
 import { CheckCircle2, Zap, Layout, ShieldCheck, BarChart } from 'lucide-react';
 import { useLanguage } from '../../context/LanguageContext';
@@ -72,7 +71,7 @@ const About: React.FC = () => {
               variants={fadeInUpVariants}
               className="prose prose-slate prose-lg dark:prose-invert text-slate-600 dark:text-slate-400 mb-8 transition-colors"
             >
-              <p className="font-medium text-slate-800 dark:text-slate-200 italic border-l-4 border-primary pl-4">
+              <p className="font-medium text-slate-800 dark:text-slate-200 italic border-l-4 border-primary pl-4 mb-5">
                 "{t('about.quote')}"
               </p>
               <p dangerouslySetInnerHTML={{ __html: t('about.description1') }} />
@@ -100,16 +99,6 @@ const About: React.FC = () => {
                 })}
               </div>
             </motion.div>
-
-            <motion.div variants={fadeInUpVariants}>
-              <div className="flex flex-wrap gap-2 opacity-70">
-                {SKILLS.map((skill) => (
-                  <span key={skill} className="px-2.5 py-1 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 rounded text-xs font-medium border border-slate-200 dark:border-slate-700 cursor-default">
-                    {skill}
-                  </span>
-                ))}
-              </div>
-            </motion.div>
           </motion.div>
 
           {/* Visual decoration */}
@@ -120,13 +109,13 @@ const About: React.FC = () => {
             whileInView="visible"
             viewport={{ once: true, margin: "-50px" }}
           >
-            <div className="relative w-72 h-72 sm:w-96 sm:h-96">
+            <div className="relative w-82 h-82 sm:w-96 sm:h-96">
               <div className="absolute inset-0 border-2 border-slate-100 dark:border-slate-800 rounded-full animate-[spin_10s_linear_infinite]"></div>
               <div className="absolute inset-4 border-2 border-dashed border-primary/30 rounded-full animate-[spin_15s_linear_infinite_reverse]"></div>
               <div className="absolute inset-0 flex items-center justify-center">
-                <div className="w-56 h-56 bg-white dark:bg-slate-900 rounded-full flex items-center justify-center shadow-2xl overflow-hidden border-4 border-slate-50 dark:border-slate-800">
+                <div className="w-60 h-60 bg-white dark:bg-slate-900 rounded-full flex items-center justify-center shadow-2xl overflow-hidden border-4 border-slate-50 dark:border-slate-800">
                   {/* Placeholder Avatar */}
-                  <img src="https://picsum.photos/400/400?grayscale" alt="Agam Avatar" className="w-full h-full object-cover opacity-80" />
+                  <img src="public/agam.jpg" alt="Agam Image" className="w-full h-full object-cover object-top opacity-80" />
                 </div>
               </div>
 

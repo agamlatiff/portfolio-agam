@@ -12,6 +12,7 @@ import ServicesPage from './pages/ServicesPage';
 import ProjectsPage from './pages/ProjectsPage';
 import AboutPage from './pages/AboutPage';
 import ContactPage from './pages/ContactPage';
+import TestAIPage from './pages/TestAIPage';
 
 // UI Utils
 import BackToTop from './components/ui/BackToTop';
@@ -36,6 +37,7 @@ const App: React.FC = () => {
               <Route path="/projects" element={<ProjectsPage />} />
               <Route path="/about" element={<AboutPage />} />
               <Route path="/contact" element={<ContactPage onOpenChat={() => setIsChatOpen(true)} />} />
+              <Route path="/test-ai" element={<TestAIPage />} />
             </Routes>
           </main>
           <Footer />

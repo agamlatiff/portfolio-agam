@@ -185,6 +185,21 @@ export const en = {
     }
   },
   projects: {
+    section: {
+      title: 'System Portfolio',
+      subtitle: 'Case studies of POS, Inventory, and Website system implementations across various industries.',
+      loading: {
+        text1: 'Loading projects',
+        text2: 'Fetching portfolio',
+        text3: 'Preparing showcase',
+        text4: 'Almost ready',
+        subtitle: 'Curating our best work for you'
+      },
+      learnMore: 'Learn About This Project',
+      featured: 'Featured',
+      watchDemo: 'Watch Demo',
+      viewDetail: 'View Details'
+    },
     '1': {
       title: 'Upskills - Learning Management System (LMS)',
       shortDescription: 'Integrated E-Learning solution for people who want to learn new skills. Managing learning materials and multi-role admin, mentor, and student.',
@@ -516,7 +531,7 @@ export const en = {
         badges: ["Full Access", "No Vendor Lock-in", "Database Included"]
       },
       warranty: {
-        title: "30 Days Bug Warranty",
+        title: "1-4 weeks Bug Warranty",
         description: "I don't run away after project completion. Any error? Feature not working? I fix it FREE until the system runs smoothly as agreed.",
         support: "Priority Support via WhatsApp"
       },

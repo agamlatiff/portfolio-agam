@@ -10,6 +10,7 @@ import { useLanguage } from '../../context/LanguageContext';
 // Separate Card Component to handle individual slider state
 const ProjectCard: React.FC<{ project: Project; onClick: () => void }> = ({ project, onClick }) => {
   const [currentImgIndex, setCurrentImgIndex] = useState(0);
+  const { translations } = useLanguage();
   const allImages = [project.heroImage, ...(project.gallery || [])];
 
   const handlePrev = (e: React.MouseEvent) => {
@@ -33,7 +34,7 @@ const ProjectCard: React.FC<{ project: Project; onClick: () => void }> = ({ proj
       {project.isFeatured && (
         <div className="absolute top-4 right-4 z-20 flex items-center gap-1.5 bg-gradient-to-r from-yellow-400 to-amber-500 text-white px-3 py-1.5 rounded-full text-xs font-bold shadow-lg border-2 border-white/50">
           <Star size={14} fill="currentColor" />
-          <span>Unggulan</span>
+          <span>{translations.projects.section.featured || 'Unggulan'}</span>
         </div>
       )}
 
@@ -83,7 +84,7 @@ const ProjectCard: React.FC<{ project: Project; onClick: () => void }> = ({ proj
         {/* Overlay on Hover (Center Action) - Replaces Play Icon on Hover */}
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
           <div className="bg-white/90 dark:bg-slate-900/90 text-slate-900 dark:text-white px-5 py-2.5 rounded-full text-sm font-bold flex items-center gap-2 shadow-xl opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">
-            {project.youtubeId ? 'Tonton Demo' : 'Lihat Detail'} <ArrowUpRight size={16} />
+            {project.youtubeId ? (translations.projects.section.watchDemo || 'Tonton Demo') : (translations.projects.section.viewDetail || 'Lihat Detail')} <ArrowUpRight size={16} />
           </div>
         </div>
 
@@ -117,7 +118,7 @@ const ProjectCard: React.FC<{ project: Project; onClick: () => void }> = ({ proj
         {/* REPLACED Tech Stack & Date with Simple Action Footer */}
         <div className="mt-auto pt-5 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between group/footer">
           <span className="text-sm font-semibold text-slate-600 dark:text-slate-400 group-hover:text-primary transition-colors">
-            Pelajari Project Ini
+            {translations.projects.section.learnMore}
           </span>
           <div className="flex items-center justify-center w-8 h-8 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-400 group-hover:bg-primary group-hover:text-white transition-all duration-300 transform group-hover:translate-x-1">
             <ArrowRight size={16} />
@@ -145,7 +146,7 @@ const Projects: React.FC = () => {
               viewport={{ once: true }}
               className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-4 transition-colors"
             >
-              Portofolio & Studi Kasus
+              {translations.projects.section.title}
             </motion.h2>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
@@ -154,7 +155,7 @@ const Projects: React.FC = () => {
               transition={{ delay: 0.1 }}
               className="text-slate-600 dark:text-slate-400 transition-colors text-lg"
             >
-              Koleksi sistem yang telah saya bangun untuk menyelesaikan masalah bisnis nyata di berbagai industri.
+              {translations.projects.section.subtitle}
             </motion.p>
           </div>
         </div>

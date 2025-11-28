@@ -185,6 +185,21 @@ export const id = {
     }
   },
   projects: {
+    section: {
+      title: 'Portofolio Sistem',
+      subtitle: 'Studi kasus implementasi sistem POS, Inventory, dan Website untuk berbagai industri.',
+      loading: {
+        text1: 'Memuat proyek',
+        text2: 'Mengambil portofolio',
+        text3: 'Menyiapkan showcase',
+        text4: 'Hampir siap',
+        subtitle: 'Menyusun karya terbaik untuk Anda'
+      },
+      learnMore: 'Pelajari Project Ini',
+      featured: 'Unggulan',
+      watchDemo: 'Tonton Demo',
+      viewDetail: 'Lihat Detail'
+    },
     '1': {
       title: 'Upskills - Learning Management System (LMS)',
       shortDescription: 'Solusi E-Learning terpadu untuk orang yang ingin belajar skill baru. Mengelola materi pembelajaran dan multi role admin, mentor dan student.',
@@ -516,7 +531,7 @@ export const id = {
         badges: ["Full Access", "No Vendor Lock-in", "Database Included"]
       },
       warranty: {
-        title: "Garansi Bug 30 Hari",
+        title: "Garansi Bug 1-4 minggu",
         description: "Saya tidak kabur setelah project selesai. Ada error? Fitur tidak jalan? Saya perbaiki GRATIS sampai sistem berjalan lancar sesuai kesepakatan awal.",
         support: "Support Prioritas via WhatsApp"
       },
@@ -676,7 +691,7 @@ export const id = {
     },
     'trust-factors': {
       title: "Garansi & Support | agamlatiff",
-      desc: "Keamanan kerjasama dengan Agam Latifullah: Garansi Bug 30 Hari, Gratis Training, dan Serah Terima Source Code."
+      desc: "Keamanan kerjasama dengan Agam Latifullah: Garansi Bug 1-4 minggu, Gratis Training, dan Serah Terima Source Code."
     },
     comparison: {
       title: "Kenapa Pilih Agam Latifullah? | agamlatiff",
@@ -1555,30 +1570,6 @@ export const id = {
           problem: "Banyak penipuan travel, pelanggan hati-hati.",
           solution: "Website resmi dengan domain .com meningkatkan kepercayaan.",
           benefit: "Closing lebih mudah karena kredibilitas terjaga."
-        }
-      ]
-    },
-    'travel-premium': {
-      name: 'PREMIUM',
-      description: 'Professional Travel Agent. Unlimited paket & formulir booking lengkap.',
-      features: [
-        'Unlimited Paket Wisata',
-        'Filter Destinasi / Kategori',
-        'Form Booking Custom',
-        'Blog Travel Tips',
-        'Testimoni Pelanggan',
-        'Integrasi Google Maps',
-        'SEO Basic untuk Wisata',
-        '4x Revisi',
-        'Maintenance 30 Hari'
-      ],
-      cta: 'Ambil Paket Premium',
-      details: [
-        {
-          feature: "Pencarian Paket Mudah",
-          problem: "Pelanggan bingung cari paket yang cocok.",
-          solution: "Fitur filter berdasarkan lokasi, harga, atau durasi hari.",
-          benefit: "User experience bagus, pelanggan cepat menemukan yang dicari."
         },
         {
           feature: "SEO Pariwisata",

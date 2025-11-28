@@ -6,6 +6,5 @@ export * from './constants/pricing';
 export * from './constants/process';
 export * from './constants/projects';
 export * from './constants/services';
-export * from './constants/tech';
 export * from './constants/testimonials';
 export * from './constants/whatsapp';
