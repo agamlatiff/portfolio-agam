@@ -1,25 +1,5 @@
-import {
-  // POS & Retail Icons
-  Store, ShoppingCart, CreditCard, Receipt, Barcode, ShoppingBag,
-  // Inventory & Warehouse Icons  
-  Package, Warehouse, TruckIcon as Truck, ClipboardList, Archive,
-  // Website & Development Icons
-  Globe, Layout, Code2, Palette, Smartphone as MobileIcon, Monitor,
-  // Booking & Calendar Icons
-  Calendar, CalendarCheck, CalendarClock, Clock, UserCheck,
-  // Business & Management Icons
-  Building2, Users, UserCog, Briefcase, TrendingUp,
-  // Tech & System Icons
-  Database, Server, Zap, Activity, Network, Layers,
-  // Marketing & Design Icons
-  PenTool, Megaphone, Eye, MousePointer2, Search,
-  // Travel & Location Icons
-  Plane, MapPin, Map, Compass, Hotel,
-  // Tools & Utilities Icons
-  Settings, RefreshCw, Hammer, Wrench, CheckCircle2,
-  // Premium & Special Icons
-  Crown, Star, Sparkles, Rocket, Award
-} from 'lucide-react';
+
+import { Store, Building2, Smartphone as MobileIcon, Globe, Layout, ShoppingCart, Calendar, Monitor, Database, Server, Rocket, Zap, Crown, CheckCircle2, ShoppingBag, Barcode, Warehouse, Search, PenTool, Activity, Plane, Map, RefreshCw, Hammer, ShoppingBasket, Network, Layers, Users, Volume2, MonitorPlay, Code2, ScanFace, MapPin, Fingerprint } from 'lucide-react';
 
 export interface PricingPlan {
   id: string;
@@ -64,7 +44,7 @@ export const POS_PACKAGES: PricingPlan[] = [
     ],
     isPopular: false,
     cta: 'Ambil Paket Basic',
-    icon: CreditCard, // POS = Payment/Cashier
+    icon: ShoppingBasket,
     details: [
       {
         feature: "Mencegah Kebocoran",
@@ -109,7 +89,7 @@ export const POS_PACKAGES: PricingPlan[] = [
     ],
     isPopular: true,
     cta: 'Ambil Paket Standard',
-    icon: Receipt, // POS with inventory tracking
+    icon: Barcode,
     details: [
       {
         feature: "Kontrol Stok Rapi",
@@ -154,7 +134,7 @@ export const POS_PACKAGES: PricingPlan[] = [
     ],
     isPopular: false,
     cta: 'Ambil Paket Premium',
-    icon: Store, // POS Pro = Full store system
+    icon: Network,
     details: [
       {
         feature: "Siap Scale Up",
@@ -198,7 +178,7 @@ export const QUEUE_PACKAGES: PricingPlan[] = [
     ],
     isPopular: false,
     cta: 'Ambil Basic Queue',
-    icon: ClipboardList, // Queue = List/Order management
+    icon: Users,
     details: [
       {
         feature: "Hilangkan Penumpukan",
@@ -239,7 +219,7 @@ export const QUEUE_PACKAGES: PricingPlan[] = [
     ],
     isPopular: true,
     cta: 'Ambil Standard Queue',
-    icon: Users, // Queue with multiple counters = Users
+    icon: Volume2,
     details: [
       {
         feature: "Efisiensi Staff",
@@ -280,7 +260,7 @@ export const QUEUE_PACKAGES: PricingPlan[] = [
     ],
     isPopular: false,
     cta: 'Konsultasi Premium',
-    icon: Monitor, // Queue with display screen
+    icon: MonitorPlay,
     details: [
       {
         feature: "Kurangi Beban Admin",
@@ -323,7 +303,7 @@ export const ATTENDANCE_PACKAGES: PricingPlan[] = [
     ],
     isPopular: false,
     cta: 'Ambil Basic Presensi',
-    icon: Clock, // Attendance Basic = Time tracking
+    icon: Fingerprint,
     details: [
       {
         feature: "Hilangkan Kecurangan",
@@ -364,7 +344,7 @@ export const ATTENDANCE_PACKAGES: PricingPlan[] = [
     ],
     isPopular: true,
     cta: 'Ambil Standard Presensi',
-    icon: MapPin, // Attendance with location = GPS
+    icon: MapPin,
     details: [
       {
         feature: "Monitoring Real-time",
@@ -405,7 +385,7 @@ export const ATTENDANCE_PACKAGES: PricingPlan[] = [
     ],
     isPopular: false,
     cta: 'Konsultasi Premium',
-    icon: UserCog, // Attendance = User management
+    icon: ScanFace,
     details: [
       {
         feature: "Multi Cabang",
@@ -451,7 +431,7 @@ export const SERVICE_PRICING: Record<string, PricingPlan[]> = {
       ],
       isPopular: false,
       cta: 'Ambil Promo Basic',
-      icon: MousePointer2, // Landing Page = Click/Conversion
+      icon: Rocket,
       details: [
         {
           feature: "Kehilangan Pelanggan (Visibility)",
@@ -492,7 +472,7 @@ export const SERVICE_PRICING: Record<string, PricingPlan[]> = {
       ],
       isPopular: true,
       cta: 'Ambil Promo Premium',
-      icon: Sparkles, // Landing Page Premium = Premium/Special
+      icon: Zap,
       details: [
         {
           feature: "Percepat Keputusan Pembeli",
@@ -534,7 +514,7 @@ export const SERVICE_PRICING: Record<string, PricingPlan[]> = {
       ],
       isPopular: false,
       cta: 'Ambil Promo Pro',
-      icon: Award, // Landing Page Pro = Award/Best
+      icon: Crown,
       details: [
         {
           feature: "Wajib Untuk Iklan (Ads)",
@@ -743,7 +723,7 @@ export const SERVICE_PRICING: Record<string, PricingPlan[]> = {
       ],
       isPopular: true,
       cta: 'Ambil Paket Premium',
-      icon: Store, // Full retail system
+      icon: Store,
       details: [
         {
           feature: "Jualan Auto-Pilot 24/7",
@@ -827,7 +807,7 @@ export const SERVICE_PRICING: Record<string, PricingPlan[]> = {
       ],
       isPopular: false,
       cta: 'Ambil Paket Basic',
-      icon: CalendarCheck, // Booking Basic = Calendar with check
+      icon: Calendar,
       details: [
         {
           feature: "Pelanggan Malas Chat Manual",
@@ -868,7 +848,7 @@ export const SERVICE_PRICING: Record<string, PricingPlan[]> = {
       ],
       isPopular: true,
       cta: 'Ambil Paket Standard',
-      icon: CalendarClock, // Booking Standard = Calendar with time
+      icon: Zap,
       details: [
         {
           feature: "Manajemen Durasi Otomatis",
@@ -909,7 +889,7 @@ export const SERVICE_PRICING: Record<string, PricingPlan[]> = {
       ],
       isPopular: false,
       cta: 'Ambil Paket Premium',
-      icon: UserCheck, // Booking Premium = User verification
+      icon: Crown,
       details: [
         {
           feature: "Cegah No-Show",
@@ -1077,7 +1057,7 @@ export const SERVICE_PRICING: Record<string, PricingPlan[]> = {
       ],
       isPopular: false,
       cta: 'Revamp Basic',
-      icon: Wrench, // Revamp Basic = Tools/Fix
+      icon: RefreshCw,
       details: [
         {
           feature: "Kesan Pertama",
@@ -1118,7 +1098,7 @@ export const SERVICE_PRICING: Record<string, PricingPlan[]> = {
       ],
       isPopular: true,
       cta: 'Revamp Premium',
-      icon: Settings, // Revamp Premium = Settings/Upgrade
+      icon: Hammer,
       details: [
         {
           feature: "Loading Cepat (Speed)",
@@ -1159,7 +1139,7 @@ export const SERVICE_PRICING: Record<string, PricingPlan[]> = {
       ],
       isPopular: false,
       cta: 'Revamp Pro',
-      icon: Rocket, // Revamp Pro = Launch/Transform
+      icon: Code2,
       details: [
         {
           feature: "Teknologi Modern",
