@@ -1,6 +1,7 @@
 
 import React, { useState } from 'react';
-import { Mail, Calendar, Send, Check, Loader2, AlertCircle, Sparkles, Phone, ChevronDown, Linkedin, Github, Instagram, Video, Youtube } from 'lucide-react';
+import { Mail, Calendar, Send, Check, Loader2, AlertCircle, Sparkles, Phone, ChevronDown } from 'lucide-react';
+import { FaInstagram, FaTiktok, FaLinkedinIn, FaGithub, FaYoutube } from 'react-icons/fa';
 import { motion, AnimatePresence } from 'framer-motion';
 import Toast from '../ui/Toast';
 import { useLanguage } from '../../context/LanguageContext';
@@ -164,11 +165,11 @@ const Contact: React.FC<ContactProps> = ({ onOpenChat }) => {
   };
 
   const SOCIAL_LINKS = [
-    { icon: Instagram, href: "https://instagram.com/agamlatiff" },
-    { icon: Video, href: "https://tiktok.com/@agamlatiff" },
-    { icon: Linkedin, href: "https://linkedin.com/in/agamlatiff" },
-    { icon: Github, href: "https://github.com/agamlatiff" },
-    { icon: Youtube, href: "https://youtube.com/@agamlatiff" }
+    { icon: FaInstagram, href: "https://www.instagram.com/agam.latiff/", label: "Instagram" },
+    { icon: FaTiktok, href: "https://www.tiktok.com/@agam.latiff", label: "TikTok" },
+    { icon: FaLinkedinIn, href: "https://www.linkedin.com/in/agam-latifullah", label: "LinkedIn" },
+    { icon: FaGithub, href: "https://github.com/agamlatiff", label: "GitHub" },
+    { icon: FaYoutube, href: "https://www.youtube.com/@AgamLatifullah-p5j7d", label: "YouTube" }
   ];
 
   return (

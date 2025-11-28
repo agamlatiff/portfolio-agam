@@ -1,17 +1,18 @@
 
 import React from 'react';
-import { Hexagon, Linkedin, Github, Instagram, ArrowRight, Mail, MapPin, Youtube, Video } from 'lucide-react';
+import { Hexagon, ArrowRight, Mail, MapPin } from 'lucide-react';
+import { FaInstagram, FaTiktok, FaLinkedinIn, FaGithub, FaYoutube } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { NAV_LINKS, SERVICES, WA_LINKS } from '../../constants';
 import { useLanguage } from '../../context/LanguageContext';
 
-// Manual definition for icons to allow Lucide replacements easily
+// Social media links with modern icons
 const SOCIALS = [
-  { icon: Instagram, href: "https://instagram.com/agamlatiff" },
-  { icon: Video, href: "https://tiktok.com/@agamlatiff" },
-  { icon: Linkedin, href: "https://linkedin.com/in/agamlatiff" },
-  { icon: Github, href: "https://github.com/agamlatiff" },
-  { icon: Youtube, href: "https://youtube.com/@agamlatiff" }
+  { icon: FaInstagram, href: "https://www.instagram.com/agam.latiff/", label: "Instagram" },
+  { icon: FaTiktok, href: "https://www.tiktok.com/@agam.latiff", label: "TikTok" },
+  { icon: FaLinkedinIn, href: "https://www.linkedin.com/in/agam-latifullah", label: "LinkedIn" },
+  { icon: FaGithub, href: "https://github.com/agamlatiff", label: "GitHub" },
+  { icon: FaYoutube, href: "https://www.youtube.com/@AgamLatifullah-p5j7d", label: "YouTube" }
 ];
 
 const Footer: React.FC = () => {
@@ -62,9 +63,10 @@ const Footer: React.FC = () => {
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-10 h-10 rounded-lg bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-500 dark:text-slate-400 hover:bg-primary hover:text-white dark:hover:bg-primary dark:hover:text-white transition-all duration-300"
+                  aria-label={social.label}
+                  className="w-10 h-10 rounded-xl bg-gradient-to-br from-slate-100 to-slate-200 dark:from-slate-800 dark:to-slate-900 flex items-center justify-center text-slate-600 dark:text-slate-400 hover:from-primary hover:to-primary-hover hover:text-white dark:hover:from-primary dark:hover:to-primary-hover dark:hover:text-white transition-all duration-300 transform hover:scale-110 hover:shadow-lg hover:shadow-primary/30"
                 >
-                  <social.icon size={18} />
+                  <social.icon size={20} />
                 </a>
               ))}
             </div>
