@@ -1,13 +1,13 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { SERVICES } from '../../constants';
 import { SERVICE_PRICING, PricingPlan } from '../../constants/pricing';
 import { Code, Layout, Smartphone, Check, Zap, Sparkles, MousePointer2, Eye, ChevronLeft, ChevronRight } from 'lucide-react';
 import { motion, AnimatePresence, useMotionTemplate, useMotionValue } from 'framer-motion';
-import { WA_LINKS } from '../../constants';
 import PlanDetailModal from '../ui/PlanDetailModal';
 import { useLanguage } from '../../context/LanguageContext';
+import { SERVICES } from '@/constants/services';
+import { WA_LINKS } from '@/constants/whatsapp';
 
 const iconMap = {
   code: Code,
@@ -198,7 +198,7 @@ const Services: React.FC = () => {
                       }`}
                   >
                     <Icon size={16} className={isActive ? "text-white" : "currentColor"} />
-                    <span className="relative z-10">{tSvc?.shortTitle || tSvc?.title || service.title}</span>
+                    <span className="relative z-10">{(tSvc && 'shortTitle' in tSvc && tSvc.shortTitle) || (tSvc && 'title' in tSvc && tSvc.title) || service.title}</span>
                   </button>
                 );
               })}
@@ -235,12 +235,12 @@ const Services: React.FC = () => {
           >
             {/* NEW: Dynamic Title based on selection */}
             <h3 className="text-xl md:text-2xl font-bold text-slate-900 dark:text-white mb-4">
-              Paket {tService?.shortTitle || tService?.title || activeServiceInfo?.title}
+              Paket {(tService && 'shortTitle' in tService && tService.shortTitle) || (tService && 'title' in tService && tService.title) || activeServiceInfo?.title}
             </h3>
 
             <div className="inline-flex flex-col items-center gap-3 bg-blue-50/50 dark:bg-blue-900/10 px-6 py-4 rounded-2xl border border-blue-100 dark:border-blue-800/30">
               <p className="text-slate-600 dark:text-slate-300 text-sm md:text-base font-medium leading-relaxed">
-                💡 {tService?.description || activeServiceInfo?.description}
+                💡 {(tService && 'description' in tService && tService.description) || activeServiceInfo?.description}
               </p>
             </div>
           </motion.div>

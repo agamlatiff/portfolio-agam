@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { FAQS } from '../../constants';
 import { Plus, Minus, MessageCircle } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useLanguage } from '../../context/LanguageContext';

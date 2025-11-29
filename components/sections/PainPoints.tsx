@@ -1,9 +1,9 @@
 
 import React from 'react';
-import { PAIN_POINTS } from '../../constants';
 import { ArrowRight, CheckCircle2, MinusCircle } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { useLanguage } from '../../context/LanguageContext';
+import { PAIN_POINTS } from '@/constants/painPoints';
 
 const PainPoints: React.FC = () => {
   const { t, translations } = useLanguage();

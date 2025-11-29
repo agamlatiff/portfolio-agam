@@ -1,6 +1,5 @@
 
 import React from 'react';
-import { TECH_STACK_ICONS } from '../../constants';
 
 const TechStack: React.FC = () => {
   // Double the items for seamless loop

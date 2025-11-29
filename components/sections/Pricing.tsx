@@ -1,11 +1,11 @@
 
 import React, { useState } from 'react';
 import { POS_PACKAGES, PricingPlan } from '../../constants/pricing';
-import { WA_LINKS } from '../../constants';
 import { Check, Zap, Eye, Star } from 'lucide-react';
 import PlanDetailModal from '../ui/PlanDetailModal';
 import { motion } from 'framer-motion';
 import { useLanguage } from '../../context/LanguageContext';
+import { WA_LINKS } from '@/constants/whatsapp';
 
 const Pricing: React.FC = () => {
   const [selectedPlan, setSelectedPlan] = useState<PricingPlan | null>(null);

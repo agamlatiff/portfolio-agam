@@ -3,8 +3,10 @@ import React from 'react';
 import { Hexagon, ArrowRight, Mail, MapPin } from 'lucide-react';
 import { FaInstagram, FaTiktok, FaLinkedinIn, FaGithub, FaYoutube } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
-import { NAV_LINKS, SERVICES, WA_LINKS } from '../../constants';
+
 import { useLanguage } from '../../context/LanguageContext';
+import { WA_LINKS } from '@/constants/whatsapp';
+import { SERVICES } from '@/constants/services';
 
 // Social media links with modern icons
 const SOCIALS = [
@@ -130,13 +132,19 @@ const Footer: React.FC = () => {
             <ul className="space-y-3">
               {SERVICES.slice(0, 5).map((service) => {
                 const tService = translations.services[service.id as keyof typeof translations.services];
+                // Type guard: check if tService has shortTitle property
+                const displayTitle = (tService && 'shortTitle' in tService && tService.shortTitle)
+                  || (tService && 'title' in tService && tService.title)
+                  || service.shortTitle
+                  || service.title;
+
                 return (
                   <li key={service.id}>
                     <Link
                       to={`/services?tab=${service.id}`}
                       className="text-slate-500 dark:text-slate-400 hover:text-primary dark:hover:text-primary transition-colors text-sm hover:underline decoration-primary/30 underline-offset-4"
                     >
-                      {tService?.shortTitle || tService?.title || service.shortTitle || service.title}
+                      {displayTitle}
                     </Link>
                   </li>
                 );

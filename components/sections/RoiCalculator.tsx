@@ -1,9 +1,9 @@
 
 import React, { useState, useEffect } from 'react';
-import { Calculator, DollarSign, ArrowRight, XCircle, CheckCircle, RefreshCcw, TrendingUp, AlertTriangle } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { WA_LINKS } from '../../constants';
+import { Calculator, ArrowRight, XCircle, CheckCircle, RefreshCcw, TrendingUp, AlertTriangle } from 'lucide-react';
+import { motion } from 'framer-motion';
 import { useLanguage } from '../../context/LanguageContext';
+import { WA_LINKS } from '@/constants/whatsapp';
 
 const RoiCalculator: React.FC = () => {
   const { t } = useLanguage();

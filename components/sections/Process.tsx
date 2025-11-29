@@ -1,8 +1,9 @@
 import React from 'react';
-import { PROCESS_STEPS, WA_LINKS } from '../../constants';
 import { ArrowRight, CheckCircle2 } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { useLanguage } from '../../context/LanguageContext';
+import { PROCESS_STEPS } from '@/constants/process';
+import { WA_LINKS } from '@/constants/whatsapp';
 
 const Process: React.FC = () => {
   const { t, translations } = useLanguage();

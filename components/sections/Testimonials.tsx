@@ -1,8 +1,8 @@
 import React from 'react';
-import { TESTIMONIALS } from '../../constants';
 import { Star, Quote } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { useLanguage } from '../../context/LanguageContext';
+import { TESTIMONIALS } from '@/constants/testimonials';
 
 const Testimonials: React.FC = () => {
   const { t, translations } = useLanguage();

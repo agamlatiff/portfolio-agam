@@ -1,8 +1,6 @@
 
 import React from 'react';
 import { Check, X, Info, Star, ShieldCheck, Zap, Layout } from 'lucide-react';
-import { COMPARISON_DATA } from '../../constants';
-import { motion } from 'framer-motion';
 import { useLanguage } from '../../context/LanguageContext';
 
 const Comparison: React.FC = () => {

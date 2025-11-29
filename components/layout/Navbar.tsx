@@ -2,8 +2,9 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X, Hexagon, Sun, Moon } from 'lucide-react';
 import { NavLink, useLocation } from 'react-router-dom';
-import { WA_LINKS, NAV_LINKS } from '../../constants';
 import { useLanguage } from '../../context/LanguageContext';
+import { NAV_LINKS } from '@/constants/nav';
+import { WA_LINKS } from '@/constants/whatsapp';
 
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);

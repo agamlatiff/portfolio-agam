@@ -1,9 +1,10 @@
 
 import React, { useEffect } from 'react';
-import { X, CheckCircle2, Zap } from 'lucide-react';
-import { Service } from '../../types';
+import { X, Zap } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { WA_LINKS } from '../../constants';
+import type { Service } from '@/types/service';
+import { WA_LINKS } from '@/constants/whatsapp';
+
 
 interface ServiceModalProps {
   service: Service | null;

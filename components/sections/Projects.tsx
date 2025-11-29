@@ -1,11 +1,11 @@
 
 import React, { useState } from 'react';
-import { PROJECTS } from '../../constants';
-import { Project } from '../../types';
 import { ArrowUpRight, PlayCircle, Star, ChevronLeft, ChevronRight, ArrowRight } from 'lucide-react';
 import ProjectModal from '../ui/ProjectModal';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useLanguage } from '../../context/LanguageContext';
+import type { Project } from '@/types/project';
+import { PROJECTS } from '@/constants/projects';
 
 // Separate Card Component to handle individual slider state
 const ProjectCard: React.FC<{ project: Project; onClick: () => void }> = ({ project, onClick }) => {

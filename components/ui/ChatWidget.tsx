@@ -3,7 +3,8 @@ import React, { useState, useRef, useEffect } from 'react';
 import { X, Send, Bot, ExternalLink, Trash2 } from 'lucide-react';
 import { GoogleGenAI, Chat, GenerateContentResponse } from "@google/genai";
 import { motion, AnimatePresence } from 'framer-motion';
-import { SERVICES, SERVICE_PRICING, POS_PACKAGES } from '../../constants';
+import { POS_PACKAGES, SERVICE_PRICING } from '@/constants/pricing';
+import { SERVICES } from '@/constants/services';
 
 // Helper to build dynamic context from the actual app data
 const buildKnowledgeBase = () => {
